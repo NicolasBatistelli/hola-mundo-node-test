@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    tools { nodejs 'latest' }
+    stages {
+        stage('Verificar node.js') {
+            steps {
+                sh 'node -v'
+                sh 'npm -v'
+            }
+        }
+        stage('Instalar dependencias') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Correr tests') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        stage('Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo 'Haciendo el deploy'
+            }
+        }
+    }
+    post {
+        success {
+            echo 'Pipeline ejecutado correctamente'
+        }
+        failure {
+            echo 'Pipeline fallido'
+        }
+    }
+}
