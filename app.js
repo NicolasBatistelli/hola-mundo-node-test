@@ -5,8 +5,5 @@ app.get('/', (req, res) => {
   res.status(200).send('Hello World!');
 });
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
-
+// No inicies el servidor aquí directamente
 module.exports = app;
