@@ -23,7 +23,7 @@ pipeline {
         stage('Construir la imagen de Docker'){
             steps{
                 script{
-                    sh 'docker build -t app-node:latest .'
+                    sh 'docker build -t app-node .'
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
                 echo 'Haciendo el deploy'
                 sh 'docker stop app-node || true'
                 sh 'docker rm app-node || true'
-                sh 'docker run -d -p 3000:3000 --name app-node app-node:latest'
+                sh 'docker run -d -p 3000:3000 --name app-node app-node'
             }
         }
     }
