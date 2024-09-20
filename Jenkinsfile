@@ -28,9 +28,6 @@ pipeline {
             }
         }
         stage('Deploy') {
-            when {
-                branch 'main'
-            }
             steps {
                 echo 'Haciendo el deploy'
                 sh 'docker stop app-node || true'
