@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Correr tests') {
             steps {
-                sh 'npm test'
+                sh 'npm test --detectOpenHandles'
             }
         }
         stage('Construir la imagen de Docker'){
