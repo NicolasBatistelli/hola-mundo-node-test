@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    tools { nodejs 'latest' }
     stages {
         stage('Verificar node.js') {
             steps {
