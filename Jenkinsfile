@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Correr tests') {
             steps {
-                sh 'npm test'
+                sh 'npx jest'
             }
         }
         stage('Construir la imagen de Docker'){
