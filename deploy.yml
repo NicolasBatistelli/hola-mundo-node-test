@@ -1,6 +1,6 @@
 ---
 - name: Desplegar app en nodeJS con docker
-  hosts: Ubuntu
+  hosts: local
   become: yes
   tasks:
     - name: verificar que docker este instalado
