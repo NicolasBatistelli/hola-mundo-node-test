@@ -1,0 +1,28 @@
+---
+- name: Desplegar app en nodeJS con docker
+  hosts: Ubuntu
+  become: yes
+  tasks:
+    - name: verificar que docker este instalado
+      apt:
+        name: docker.io
+        state: present
+
+    - name: iniciar docker
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: parar y eliminar contenedor existente
+      docker_container:
+        name: app-node
+        state: absent
+
+    - name: ejecutar el contenedor
+      docker_container:
+        name: app-node
+        image: app-node
+        state: started
+        published_ports:
+          - "3000:3000"
