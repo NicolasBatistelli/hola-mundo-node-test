@@ -39,7 +39,7 @@ pipeline {
         stage('Desplegar con Ansible'){
             steps{
                 script{
-                    ansiblePlaybook playbook: 'deploy.yml', inventory: '/home/nico/Escritorio/ansible/ansible-avanzado'
+                    ansiblePlaybook playbook: 'deploy.yml', inventory: '/home/nico/Escritorio/ansible/ansible-avanzado/inventario.ini'
                 }
             }
         }
