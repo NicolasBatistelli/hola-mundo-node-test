@@ -20,7 +20,7 @@ pipeline {
                 sh 'npm test --detectOpenHandles'
             }
         }
-        stage('Construir la imagen de Docker'){
+        /*stage('Construir la imagen de Docker'){
             steps{
                 script{
                     sh 'docker build -t app-node .'
@@ -33,6 +33,14 @@ pipeline {
                 sh 'docker stop app-node || true'
                 sh 'docker rm app-node || true'
                 sh 'docker run -d -p 3000:3000 --name app-node app-node'
+            }
+        }*/
+
+        stage('Desplegar con Ansible'){
+            steps{
+                script{
+                    ansiblePlaybook playbook: 'deploy.yml', inventory: '/home/nico/Escritorio/ansible/ansible-avanzado'
+                }
             }
         }
     }
