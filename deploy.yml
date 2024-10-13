@@ -3,11 +3,6 @@
   hosts: local
   become: yes
   tasks:
-    - name: verificar que docker este instalado
-      apt:
-        name: docker.io
-        state: present
-
     - name: iniciar docker
       service:
         name: docker
